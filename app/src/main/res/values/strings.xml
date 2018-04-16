@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Assignment2</string>
+
+    <string name="platform">Platform: </string>
+    <string name="username">Username: </string>
+    <string name="submit">Submit</string>
+    <string name="introText">Keep A Track Of All Your Stats!</string>
+
+    <string name="solo">Solo</string>
+    <string name="duo">Duo</string>
+    <string name="squad">Squad</string>
+    <string name="overall">Overall</string>
+
+    <string name="kills">Kills: </string>
+    <string name="wins">Wins: </string>
+    <string name="kpm">KPG: </string>
+    <string name="winPerc">Win %: </string>
+    <string name="kd">K/D: </string>
+    <string name="matches">Matches: </string>
+
+    <string-array name="platform">
+        <item>PC</item>
+        <item>Xbox</item>
+        <item>PlayStation</item>
+    </string-array>
+
+</resources>
