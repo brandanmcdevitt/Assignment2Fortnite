@@ -64,6 +64,7 @@ public class StatScreen extends AppCompatActivity {
         editor.commit();
 
         //the header will be used in conjuction with the API KEY to allow access to the server
+        //(view README.md if you have not got an API Key)
         header = "TRN-Api-Key";
         key = getApplicationContext().getString(R.string.API_KEY);
 
