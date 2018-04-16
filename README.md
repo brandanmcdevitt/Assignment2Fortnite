@@ -1,5 +1,5 @@
 # Fortnite-Stat-Tracker
-Assignment 2
+Mobile Development - Assignment 2
 
 
 ###### Generate your API Key
