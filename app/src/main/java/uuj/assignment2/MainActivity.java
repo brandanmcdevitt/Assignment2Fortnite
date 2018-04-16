@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     //We used http://www.jsonschema2pojo.org to create POJO for our GSON
 
+    //githubtest
+
     //creating the TAG for logging
     String TAG = "TESTCHECK";
 
