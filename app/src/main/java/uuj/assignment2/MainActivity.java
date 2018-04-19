@@ -26,9 +26,19 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    //We used http://www.jsonschema2pojo.org to create POJO for our GSON
+    //we used Github to help work on this project as a group
+    //https://github.com/brandanmcdevitt/Fortnite-Stat-Tracker
 
-    //githubtest
+    //group:
+    //-Brandan McDevitt B00705343
+    //-Joel Vangente
+    //-Ruth Hegan
+    //-Shea Hughes
+
+    //The API Key was removed so as not to publish it on Github
+    //View README.md to get an API Key
+
+    //We used http://www.jsonschema2pojo.org to create POJO for our GSON
 
     //creating the TAG for logging
     String TAG = "TESTCHECK";
