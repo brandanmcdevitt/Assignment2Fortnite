@@ -1,0 +1,5 @@
+Possible Ideas.
+
+Add leaderboard
+Use persistent storage for remembering usernames
+Add loading bar between search and stat screen
