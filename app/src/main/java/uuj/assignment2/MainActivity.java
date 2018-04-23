@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     //group:
     //-Brandan McDevitt B00705343
-    //-Joel Vangente
-    //-Ruth Hegan
-    //-Shea Hughes
+    //-Joel Vangente B00705358
+    //-Ruth Hegan B00705338
+    //-Shea Hughes B00738412
 
     //The API Key was removed so as not to publish it on Github
     //View README.md to get an API Key
@@ -47,12 +48,13 @@ public class MainActivity extends AppCompatActivity {
     //into the next activity
     String platform;
     String username;
+    static String lastSearch;
 
     //getting UI elements
     Spinner spPlatform;
-    EditText tbUsername;
+    //EditText tbUsername;
     Button btnSubmit;
-    AutoCompleteTextView autoTextView;
+    AutoCompleteTextView tbUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +70,15 @@ public class MainActivity extends AppCompatActivity {
         spPlatform = findViewById(R.id.spinner);
         tbUsername = findViewById(R.id.tbUsername);
         btnSubmit = findViewById(R.id.btnSubmit);
+        //autoTextView = findViewById(R.id.tbUsername);
 
         SharedPreferences prefs = this.getSharedPreferences("usernamePrefs", Context.MODE_PRIVATE);
-        String storedUser = prefs.getString("username", "");
+        lastSearch = prefs.getString("username", "");
         SharedPreferences.Editor editor = prefs.edit();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, Collections.singletonList(lastSearch));
+        tbUsername.setAdapter(adapter);
 
         //when the submit button is clicked it will run this block of code
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +141,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static final String[] storedUsernames = new String[] {
+    private static final String[] previousSearch = new String[] {
+        lastSearch
     };
 
     //invoking the onStart callback with logging for testing purposes
