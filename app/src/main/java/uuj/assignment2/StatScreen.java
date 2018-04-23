@@ -187,7 +187,7 @@ public class StatScreen extends AppCompatActivity {
                             final double overallKpmToBeFixed = Double.parseDouble(response.getStats().getP2().getKpg().getValue())
                                     +Double.parseDouble(response.getStats().getP10().getKpg().getValue())
                                     +Double.parseDouble(response.getStats().getP9().getKpg().getValue());
-                            final double overallWinPerc = Double.parseDouble(response.getStats().getP2().getWinRatio().getValue())
+                            final double overallWinPercToBeFixed = Double.parseDouble(response.getStats().getP2().getWinRatio().getValue())
                                     +Double.parseDouble(response.getStats().getP10().getWinRatio().getValue())
                                     +Double.parseDouble(response.getStats().getP9().getWinRatio().getValue());
                             final double overallKdToBeFixed = Double.parseDouble(response.getStats().getP2().getKd().getValue())
@@ -200,6 +200,7 @@ public class StatScreen extends AppCompatActivity {
                             //bringing the overallKd value to 2 decimal places
                             final String overallKd = String.format("%.2f", overallKdToBeFixed);
                             final String overallKpm = String.format("%.2f", overallKpmToBeFixed);
+                            final String overallWinPerc = String.format("%.2f", overallWinPercToBeFixed);
 
                             //we have to use runOnUiThread to be able to populate and alter our
                             //UI elements from within the AsyncTask
