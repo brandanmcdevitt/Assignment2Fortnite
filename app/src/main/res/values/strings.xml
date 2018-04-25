@@ -18,10 +18,20 @@
     <string name="kd">K/D: </string>
     <string name="matches">Matches: </string>
 
+    <string name="current">Current Mood</string>
+
     <string-array name="platform">
         <item>PC</item>
         <item>Xbox</item>
         <item>PlayStation</item>
+    </string-array>
+
+    <string-array name="gifs">
+        <item>https://i.redd.it/6wyyiw02lsh01.gif</item>
+        <item>https://i.imgur.com/aTb718c.gif</item>
+        <item>https://i.imgur.com/JrwG3Uw.gif</item>
+        <item>http://pa1.narvii.com/6791/57bc5c5c34806c873b82bb9d3d0966104d1377a6_00.gif</item>
+        <item>https://78.media.tumblr.com/fc57d16d1516dae528da813f54954b04/tumblr_p406zbaEqv1uutgwwo1_500.gif</item>
     </string-array>
 
 </resources>

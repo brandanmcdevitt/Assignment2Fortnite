@@ -18,7 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StatScreen"></activity>
+        <activity android:name=".StatScreen" />
+        <activity android:name=".settings" />
+        <activity android:name=".CurrentMood"></activity>
     </application>
 
 </manifest>
