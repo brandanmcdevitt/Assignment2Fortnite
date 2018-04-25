@@ -1,5 +1,6 @@
 package uuj.assignment2;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -55,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
     //EditText tbUsername;
     Button btnSubmit;
     AutoCompleteTextView tbUsername;
+    ImageButton btnSettings;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         spPlatform = findViewById(R.id.spinner);
         tbUsername = findViewById(R.id.tbUsername);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnSettings = findViewById(R.id.btnSettings);
         //autoTextView = findViewById(R.id.tbUsername);
 
         SharedPreferences prefs = this.getSharedPreferences("usernamePrefs", Context.MODE_PRIVATE);
@@ -121,6 +126,20 @@ public class MainActivity extends AppCompatActivity {
                } else {
                    Toast.makeText(getApplicationContext(), "Please enter a username", Toast.LENGTH_SHORT).show();
                }
+            }
+        });
+
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(getApplicationContext(), "settings button clicked", Toast.LENGTH_SHORT).show();
+
+                //creating a new intent
+                Intent screenChange = new Intent(getApplicationContext(), settings.class);
+                //creating a bundle to store the variables that will be passed into the next
+                //activity
+                //starting our activity for a result
+                startActivity(screenChange);
             }
         });
 
