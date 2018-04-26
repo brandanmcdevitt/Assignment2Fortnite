@@ -23,17 +23,21 @@ public class CurrentMood extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_current_mood);
 
+        //linking an imageview from the layout
         ImageView image = findViewById(R.id.ivGif);
 
-        //String gifs[] = ["", ""];
-
+        //getting the resources and setting up string array from the strings.xml
         Resources res = getResources();
         String[] gif = res.getStringArray(R.array.gifs);
 
+        //creating a new random
         Random r = new Random();
 
+        //setting up the random to be at max the amount of the values in the array
         int choice = r.nextInt(gif.length);
 
+        //using Glide to display gif images from a url source and place into an imageview based on the
+        //random number picked
         Glide
                 .with(getApplicationContext())
                 .load(gif[choice])

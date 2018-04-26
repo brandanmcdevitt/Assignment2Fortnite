@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
     //into the next activity
     String platform;
     String username;
+
+    //data storage strings
     static String lastSearch;
+    int bgChoice;
 
     //getting UI elements
     Spinner spPlatform;
@@ -58,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
     Button btnSubmit;
     AutoCompleteTextView tbUsername;
     ImageButton btnSettings;
+
+    //setting up the layout so that we can set the background
+    ConstraintLayout layout;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -77,10 +84,32 @@ public class MainActivity extends AppCompatActivity {
         btnSettings = findViewById(R.id.btnSettings);
         //autoTextView = findViewById(R.id.tbUsername);
 
+        //using shared preferences for retrieving data regarding the username and bg colour
         SharedPreferences prefs = this.getSharedPreferences("usernamePrefs", Context.MODE_PRIVATE);
         lastSearch = prefs.getString("username", "");
+        bgChoice = prefs.getInt("bg", 0);
         SharedPreferences.Editor editor = prefs.edit();
 
+        //linking the layout to the UI element
+        layout = findViewById(R.id.layoutMain);
+
+        //if statement to determine the background colour
+        if(bgChoice == 1) {
+            //if the bgChoice int that has been returned is equal to 1 then set the background to
+            //homev2
+            layout.setBackgroundResource(R.drawable.homev2);
+        } else if(bgChoice == 2) {
+            //if the bgChoice int that has been returned is equal to 2 then set the background to
+            //homev3
+            layout.setBackgroundResource(R.drawable.homev3);
+        } else if(bgChoice == 3) {
+            //if the bgChoice int that has been returned is equal to 3 then set the background to
+            //homev4
+            layout.setBackgroundResource(R.drawable.homev4);
+        }
+
+        //using an array adapter for the previosuly searched usernames to display in the
+        //autocompletetextbox
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, Collections.singletonList(lastSearch));
         tbUsername.setAdapter(adapter);
@@ -118,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                    Bundle bndleStorage = new Bundle();
                    bndleStorage.putString("platform", platform);
                    bndleStorage.putString("username", username);
+                   bndleStorage.putInt("bg", bgChoice);
                    screenChange.putExtras(bndleStorage);
                    //starting our activity for a result
                    startActivityForResult(screenChange, 1);
@@ -169,6 +199,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Log.v(TAG, "Invoked onStart()");
+
+        //checking the background colour returned from the settings screen.
+        //invoking this code within the onStart method so that when we finish() the settings activity
+        //it will load the new colour on the home activity
+        SharedPreferences prefs = this.getSharedPreferences("usernamePrefs", Context.MODE_PRIVATE);
+        bgChoice = prefs.getInt("bg", 0);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        layout = findViewById(R.id.layoutMain);
+
+        if(bgChoice == 1) {
+            //if the bgChoice int that has been returned is equal to 1 then set the background to
+            //homev2
+            layout.setBackgroundResource(R.drawable.homev2);
+        } else if(bgChoice == 2) {
+            //if the bgChoice int that has been returned is equal to 2 then set the background to
+            //homev3
+            layout.setBackgroundResource(R.drawable.homev3);
+        } else if(bgChoice == 3) {
+            //if the bgChoice int that has been returned is equal to 3 then set the background to
+            //homev4
+            layout.setBackgroundResource(R.drawable.homev4);
+        }
 
     }
 

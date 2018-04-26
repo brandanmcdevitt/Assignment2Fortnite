@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,11 +37,21 @@ public class StatScreen extends AppCompatActivity {
     //We will be using GSON to parse the returned JSON.
     String platform;
     String username;
+    int bgChoice;
 
     //the header, key and url will be used for the connection
     String header;
     String key;
     String url;
+
+    //setting up a layout variable
+    ConstraintLayout layout;
+
+    //setting up textviews for the solo, duo, squad and overall titles
+    TextView solo;
+    TextView duo;
+    TextView squad;
+    TextView overall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +68,41 @@ public class StatScreen extends AppCompatActivity {
         if(getIntent().getExtras() != null) {
             platform = getIntent().getExtras().getString("platform");
             username = getIntent().getExtras().getString("username");
+            bgChoice = getIntent().getExtras().getInt("bg");
+        }
+
+        //linking the layout and title textviews mentioned previously
+        layout = findViewById(R.id.layoutStats);
+        solo = findViewById(R.id.tvSolo);
+        duo = findViewById(R.id.tvDuo);
+        squad = findViewById(R.id.tvSquad);
+        overall = findViewById(R.id.tvOverall);
+
+        //if bgChoice is == a certain Int then change some elements
+        if(bgChoice == 1) {
+            //if the bgChoice int that has been returned is equal to 1 then set the background to
+            //statsv3 and the text colours to 'fortnitePurpleLight'
+            layout.setBackgroundResource(R.drawable.statsv3);
+            solo.setTextColor(getResources().getColor(R.color.fortnitePurpleLight));
+            duo.setTextColor(getResources().getColor(R.color.fortnitePurpleLight));
+            squad.setTextColor(getResources().getColor(R.color.fortnitePurpleLight));
+            overall.setTextColor(getResources().getColor(R.color.fortnitePurpleLight));
+        } else if(bgChoice == 2) {
+            //if the bgChoice int that has been returned is equal to 1 then set the background to
+            //statsv4 and the text colours to 'bgBlue'
+            layout.setBackgroundResource(R.drawable.statsv4);
+            solo.setTextColor(getResources().getColor(R.color.bgBlue));
+            duo.setTextColor(getResources().getColor(R.color.bgBlue));
+            squad.setTextColor(getResources().getColor(R.color.bgBlue));
+            overall.setTextColor(getResources().getColor(R.color.bgBlue));
+        } else if(bgChoice == 3) {
+            //if the bgChoice int that has been returned is equal to 1 then set the background to
+            //statsv4 and the text colours to 'bgRed'
+            layout.setBackgroundResource(R.drawable.statsv5);
+            solo.setTextColor(getResources().getColor(R.color.bgRed));
+            duo.setTextColor(getResources().getColor(R.color.bgRed));
+            squad.setTextColor(getResources().getColor(R.color.bgRed));
+            overall.setTextColor(getResources().getColor(R.color.bgRed));
         }
 
         //using shared preferences for our persistant data storage
