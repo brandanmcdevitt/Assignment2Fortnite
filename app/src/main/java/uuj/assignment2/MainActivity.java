@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     //data storage strings
     static String lastSearch;
+    //int for the background choice
     int bgChoice;
 
     //getting UI elements
